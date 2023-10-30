@@ -1,7 +1,7 @@
 <?php
 
 namespace Database\Factories;
-
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -14,14 +14,13 @@ class postsFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition(): array
+    public function definition()//: array
     {
         return [
             // the posts factory for inputing dummy data
-            // 'id' => $this->faker->randomDigitNotNull(),
+            'user_id' => User::factory(),
             'title' => $this->faker->sentence(3),
             'content' => $this->faker->paragraph(5),
-            'author' => $this->faker->sentence(),
         ];
     }
 }

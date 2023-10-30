@@ -3,7 +3,8 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\posts;
+use App\Models\Posts;
+use App\Models\User;
 use Database\Factories\postsFactory;
 
 /**
@@ -16,11 +17,13 @@ class commentsFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition(): array
+    public function definition()//: array
     {
-        $blogs = posts::all()->pluck('id')->toArray();
+        // $blogs = Posts::all()->pluck('id')->toArray();
         return [
             // make dummy comments
+            'posts_id' => Posts::factory(),
+            'user_id' => User::factory(),
             'content' => $this->faker->sentence(1),
         ];
     }
